@@ -1,1 +1,5 @@
-console.log("Hello Typescript!")
+import { Student } from './Student'
+
+let alex = new Student("Alex")
+
+console.log(alex.name)
