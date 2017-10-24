@@ -22,4 +22,15 @@ export class Course {
         this.students.push(student)
     }
 
+
+    printInfo() {
+        console.log("Course name: " + this.name)
+        console.log("Description: " + this.description)
+        console.log("Teacher: " + this.teacher.name)
+        
+        console.log("Students: ")
+        this.students.forEach((v, i) => {
+            console.log(i + ": " + v.name)
+        })
+    }
 }
