@@ -1,0 +1,16 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "taskName": "Compile & Browserify",
+            "command": "tsc -p Students && browserify ./Students/out/src -o ./Students/bundle.js && chromium-browser ./Students/index.html",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
