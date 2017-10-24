@@ -10,3 +10,5 @@ let math_i = new Course("Math I")
 
 math_i.setTeacher(mike)
 math_i.addStudent(alex)
+
+math_i.printInfo()
