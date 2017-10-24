@@ -10,5 +10,7 @@ let math_i = new Course("Math I")
 
 math_i.setTeacher(mike)
 math_i.addStudent(alex)
+math_i.addStudent(new Student("Mi"))
+math_i.addStudent({name : "RandomBoi"})
 
 math_i.printInfo()
