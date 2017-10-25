@@ -18,8 +18,12 @@ export class Course {
         this.teacher = teacher
     }
 
-    addStudent(student: Student) {
-        this.students.push(student)
+    addStudent(student: Student | Student[]) {
+        if (student instanceof Student) {
+            this.students.push(student)
+        } else {
+            student.forEach(v => this.students.push(v))
+        }
     }
 
 
