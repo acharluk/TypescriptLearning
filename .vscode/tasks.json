@@ -6,11 +6,12 @@
         {
             "type": "shell",
             "taskName": "Compile & Browserify",
-            "command": "tsc -p Students && browserify ./Students/out/src -o ./Students/bundle.js && chromium-browser ./Students/index.html",
+            "command": "tsc -p Students && browserify ./Students/out/src -o ./Students/bundle.js",
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": []
         }
     ]
 }
