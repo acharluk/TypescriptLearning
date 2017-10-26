@@ -6,14 +6,17 @@ export class MainView {
 
     courseOptions: CourseView[]
     courseOptions_html: HTMLElement
+    courseViews_html: HTMLElement
 
     constructor(root?: HTMLElement) {
         this.root = root ? root : document.body
         this.courseOptions = []
         this.courseOptions_html = document.createElement('select')
+        this.courseViews_html = document.createElement('div')
     }
 
     add(cView: CourseView) {
+        cView.root = this.courseViews_html
         this.courseOptions.push(cView)
     }
 
@@ -21,9 +24,14 @@ export class MainView {
         this.courseOptions.forEach(v => {
             let option = document.createElement('option')
             option.textContent = v.course.name
+            this.courseOptions_html.onchange = () => {
+                this.courseOptions[0].show()
+                console.log("onchange!")
+            }
             
             this.courseOptions_html.appendChild(option)
-            this.root.appendChild(this.courseOptions_html)
         })
+        this.root.appendChild(this.courseOptions_html)
+        this.root.appendChild(this.courseViews_html)
     }
 }
