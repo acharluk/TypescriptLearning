@@ -45,7 +45,8 @@ exports.Student = Student;
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class CourseView {
-    constructor(root) {
+    constructor(course, root) {
+        this.course = course;
         this.root = root ? root : document.body;
     }
     show(course) {
@@ -64,12 +65,39 @@ exports.CourseView = CourseView;
 },{}],4:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+class MainView {
+    constructor(root) {
+        this.root = root ? root : document.body;
+        this.courseOptions = [];
+        this.courseOptions_html = document.createElement('select');
+    }
+    add(cView) {
+        this.courseOptions.push(cView);
+    }
+    show() {
+        this.courseOptions.forEach(v => {
+            let option = document.createElement('option');
+            option.textContent = v.course.name;
+            this.courseOptions_html.appendChild(option);
+            this.root.appendChild(this.courseOptions_html);
+        });
+    }
+}
+exports.MainView = MainView;
+
+},{}],5:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // Web interface
+const MainView_1 = require("./views/MainView");
 const CourseView_1 = require("./views/CourseView");
 const Course_1 = require("./core/Course");
 let myCourse = new Course_1.Course("Math I");
 myCourse.addStudent([{ name: "Alex" }]);
-let courseTest = new CourseView_1.CourseView();
-courseTest.show(myCourse);
+let courseTest = new CourseView_1.CourseView(myCourse);
+// courseTest.show(myCourse)
+let mainV = new MainView_1.MainView();
+mainV.add(courseTest);
+mainV.show();
 
-},{"./core/Course":1,"./views/CourseView":3}]},{},[4]);
+},{"./core/Course":1,"./views/CourseView":3,"./views/MainView":4}]},{},[5]);
