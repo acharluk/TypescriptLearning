@@ -1,42 +1,10 @@
 // Web interface
-import { Student } from './Student'
+import { CourseView } from './views/CourseView'
+import { Course } from './core/Course'
 
-let students: Student[] = []
+let myCourse = new Course("Math I")
 
-let addStudent_input = document.createElement('input')
-let addStudent_button = document.createElement('button')
+myCourse.addStudent([{name: "Alex"}])
 
-let studentList = document.createElement('select')
-let refreshStudents_button = document.createElement('button')
-
-let addStudent = () => {
-    let newStudent = new Student(addStudent_input.value)
-    students.push(newStudent)
-    console.log("Added new student: " + newStudent.name)
-}
-
-let refreshStudents = () => {
-    console.log("Refreshing student list")
-    while (studentList.lastChild) {
-        studentList.removeChild(studentList.lastChild)
-    }
-
-    students.forEach(v => {
-        let s = document.createElement('option')
-        s.textContent = v.name
-        studentList.appendChild(s)
-        console.log(v.name)
-    })
-}
-
-addStudent_button.onclick = addStudent
-addStudent_button.textContent = "Add Student"
-
-refreshStudents_button.onclick = refreshStudents
-refreshStudents_button.textContent = "Refresh student list"
-
-
-document.body.appendChild(addStudent_input)
-document.body.appendChild(addStudent_button)
-document.body.appendChild(refreshStudents_button)
-document.body.appendChild(studentList)
+let courseTest = new CourseView()
+courseTest.show(myCourse)
