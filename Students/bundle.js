@@ -16,8 +16,7 @@ const Student_1 = require("./Student");
 let students = [];
 let addStudent_input = document.createElement('input');
 let addStudent_button = document.createElement('button');
-let studentList = document.createElement('div');
-studentList.setAttribute('id', "studentList_div");
+let studentList = document.createElement('select');
 let refreshStudents_button = document.createElement('button');
 let addStudent = () => {
     let newStudent = new Student_1.Student(addStudent_input.value);
@@ -30,7 +29,7 @@ let refreshStudents = () => {
         studentList.removeChild(studentList.lastChild);
     }
     students.forEach(v => {
-        let s = document.createElement('p');
+        let s = document.createElement('option');
         s.textContent = v.name;
         studentList.appendChild(s);
         console.log(v.name);
