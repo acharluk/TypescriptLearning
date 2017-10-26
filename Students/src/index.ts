@@ -1,8 +1,20 @@
 // Web interface
 import { Student } from './Student'
 
-let s = new Student("Alex")
+let students: Student[] = []
 
-let testp = document.createElement('h1')
-testp.textContent = s.name
-document.body.appendChild(testp)
+let addStudent_input = document.createElement('input')
+let addStudent_button = document.createElement('button')
+
+let addStudent = () => {
+    let newStudent = new Student(addStudent_input.value)
+    students.push(newStudent)
+}
+
+
+addStudent_button.click = addStudent
+addStudent_button.textContent = "Add Student"
+
+
+document.body.appendChild(addStudent_input)
+document.body.appendChild(addStudent_button)
