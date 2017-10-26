@@ -48,16 +48,24 @@ class CourseView {
     constructor(course, root) {
         this.course = course;
         this.root = root ? root : document.body;
+        this.students_html = document.createElement('select');
     }
-    show(course) {
-        let name = document.createElement('h1');
-        name.textContent = course.name;
-        this.root.appendChild(name);
-        course.students.forEach(v => {
-            let elem = document.createElement('p');
-            elem.textContent = v.name;
-            this.root.appendChild(elem);
+    show() {
+        // let name = document.createElement('h1')
+        // name.textContent = this.course.name
+        // this.root.appendChild(name)
+        // this.course.students.forEach(v => {
+        //     let elem = document.createElement('p')
+        //     elem.textContent = v.name
+        //     this.root.appendChild(elem)
+        // });
+        this.course.students.forEach(v => {
+            console.log(v);
+            let option = document.createElement('option');
+            option.textContent = v.name;
+            this.students_html.appendChild(option);
         });
+        this.root.appendChild(this.students_html);
     }
 }
 exports.CourseView = CourseView;
@@ -70,17 +78,24 @@ class MainView {
         this.root = root ? root : document.body;
         this.courseOptions = [];
         this.courseOptions_html = document.createElement('select');
+        this.courseViews_html = document.createElement('div');
     }
     add(cView) {
+        cView.root = this.courseViews_html;
         this.courseOptions.push(cView);
     }
     show() {
         this.courseOptions.forEach(v => {
             let option = document.createElement('option');
             option.textContent = v.course.name;
+            this.courseOptions_html.onchange = () => {
+                this.courseOptions[0].show();
+                console.log("onchange!");
+            };
             this.courseOptions_html.appendChild(option);
-            this.root.appendChild(this.courseOptions_html);
         });
+        this.root.appendChild(this.courseOptions_html);
+        this.root.appendChild(this.courseViews_html);
     }
 }
 exports.MainView = MainView;
@@ -95,9 +110,12 @@ const Course_1 = require("./core/Course");
 let myCourse = new Course_1.Course("Math I");
 myCourse.addStudent([{ name: "Alex" }]);
 let courseTest = new CourseView_1.CourseView(myCourse);
-// courseTest.show(myCourse)
+let myCourse2 = new Course_1.Course("Physics II");
+myCourse2.addStudent([{ name: "Combo" }]);
+let courseTest2 = new CourseView_1.CourseView(myCourse2);
 let mainV = new MainView_1.MainView();
 mainV.add(courseTest);
+mainV.add(courseTest2);
 mainV.show();
 
 },{"./core/Course":1,"./views/CourseView":3,"./views/MainView":4}]},{},[5]);
