@@ -1,6 +1,6 @@
-import { Student } from './Student'
-import { Teacher } from "./Teacher"
-import { Course } from "./Course"
+import { Student } from './core/Student'
+import { Teacher } from "./core/Teacher"
+import { Course } from "./core/Course"
 
 let alex = new Student("Alex")
 
