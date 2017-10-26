@@ -6,7 +6,7 @@ let students: Student[] = []
 let addStudent_input = document.createElement('input')
 let addStudent_button = document.createElement('button')
 
-let studentList = document.createElement('div')
+let studentList = document.createElement('select')
 let refreshStudents_button = document.createElement('button')
 
 let addStudent = () => {
@@ -22,7 +22,7 @@ let refreshStudents = () => {
     }
 
     students.forEach(v => {
-        let s = document.createElement('p')
+        let s = document.createElement('option')
         s.textContent = v.name
         studentList.appendChild(s)
         console.log(v.name)
