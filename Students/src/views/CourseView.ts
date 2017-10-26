@@ -4,21 +4,22 @@ export class CourseView {
     root: HTMLElement
 
     course: Course
+    students_html: HTMLElement
 
     constructor(course: Course, root ?: HTMLElement) {
         this.course = course
         this.root = root ? root : document.body
+        this.students_html = document.createElement('select')
     }
 
     show() {
-        let name = document.createElement('h1')
-        name.textContent = this.course.name
-
-        this.root.appendChild(name)
         this.course.students.forEach(v => {
-            let elem = document.createElement('p')
-            elem.textContent = v.name
-            this.root.appendChild(elem)
-        });
+            console.log(v)
+            let option = document.createElement('option')
+            option.textContent = v.name
+            
+            this.students_html.appendChild(option)
+        })
+        this.root.appendChild(this.students_html)
     }
 }
