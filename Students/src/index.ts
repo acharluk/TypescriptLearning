@@ -5,6 +5,8 @@ let students: Student[] = []
 
 let addStudent_input = document.createElement('input')
 let addStudent_button = document.createElement('button')
+
+let studentList = document.createElement('div')
 let refreshStudents_button = document.createElement('button')
 
 let addStudent = () => {
@@ -15,10 +17,14 @@ let addStudent = () => {
 
 let refreshStudents = () => {
     console.log("Refreshing student list")
+    while (studentList.lastChild) {
+        studentList.removeChild(studentList.lastChild)
+    }
+
     students.forEach(v => {
         let s = document.createElement('p')
         s.textContent = v.name
-        document.body.appendChild(s)
+        studentList.appendChild(s)
         console.log(v.name)
     })
 }
@@ -33,3 +39,4 @@ refreshStudents_button.textContent = "Refresh student list"
 document.body.appendChild(addStudent_input)
 document.body.appendChild(addStudent_button)
 document.body.appendChild(refreshStudents_button)
+document.body.appendChild(studentList)
