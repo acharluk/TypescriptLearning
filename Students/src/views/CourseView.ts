@@ -3,16 +3,19 @@ import { Course } from './../core/Course'
 export class CourseView {
     root: HTMLElement
 
-    constructor(root ?: HTMLElement) {
+    course: Course
+
+    constructor(course: Course, root ?: HTMLElement) {
+        this.course = course
         this.root = root ? root : document.body
     }
 
-    show(course: Course) {
+    show() {
         let name = document.createElement('h1')
-        name.textContent = course.name
+        name.textContent = this.course.name
 
         this.root.appendChild(name)
-        course.students.forEach(v => {
+        this.course.students.forEach(v => {
             let elem = document.createElement('p')
             elem.textContent = v.name
             this.root.appendChild(elem)
