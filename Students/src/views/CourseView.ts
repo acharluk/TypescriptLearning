@@ -13,6 +13,8 @@ export class CourseView {
     }
 
     show() {
+        while(this.students_html.lastChild)
+            this.students_html.removeChild(this.students_html.lastChild)
         this.course.students.forEach(v => {
             console.log(v)
             let option = document.createElement('option')
