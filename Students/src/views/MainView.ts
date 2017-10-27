@@ -5,7 +5,7 @@ export class MainView {
     root: HTMLElement
 
     courseOptions: CourseView[]
-    courseOptions_html: HTMLElement
+    courseOptions_html: HTMLSelectElement
     courseViews_html: HTMLElement
 
     constructor(root?: HTMLElement) {
@@ -23,17 +23,19 @@ export class MainView {
     show() {
         while(this.courseOptions_html.lastChild)
             this.courseOptions_html.removeChild(this.courseOptions_html.lastChild)
+
         this.courseOptions.forEach(v => {
             let option = document.createElement('option')
             option.textContent = v.course.name
             this.courseOptions_html.onchange = () => {
-                // TODO: Show correct course
-                this.courseOptions[0].show()
+                let index = this.courseOptions_html.selectedIndex
+                this.courseOptions[index].show()
                 console.log("onchange!")
             }
-            
+
             this.courseOptions_html.appendChild(option)
         })
+
         this.root.appendChild(this.courseOptions_html)
         this.root.appendChild(this.courseViews_html)
     }
