@@ -65,14 +65,17 @@ let db = [
         "name": "Math I",
         "description": "No description provided",
         "students": [
-            { "name": "Alex" }
+            { "name": "Alex" },
+            { "name": "Gum" },
+            { "name": "Missingno" }
         ]
     },
     {
         "name": "Physics II",
         "description": "No description provided",
         "students": [
-            { "name": "Combo" }
+            { "name": "Combo" },
+            { "name": "Sirius" }
         ]
     }
 ];
