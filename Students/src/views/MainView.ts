@@ -21,10 +21,13 @@ export class MainView {
     }
 
     show() {
+        while(this.courseOptions_html.lastChild)
+            this.courseOptions_html.removeChild(this.courseOptions_html.lastChild)
         this.courseOptions.forEach(v => {
             let option = document.createElement('option')
             option.textContent = v.course.name
             this.courseOptions_html.onchange = () => {
+                // TODO: Show correct course
                 this.courseOptions[0].show()
                 console.log("onchange!")
             }
