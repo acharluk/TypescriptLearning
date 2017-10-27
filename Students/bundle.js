@@ -51,14 +51,8 @@ class CourseView {
         this.students_html = document.createElement('select');
     }
     show() {
-        // let name = document.createElement('h1')
-        // name.textContent = this.course.name
-        // this.root.appendChild(name)
-        // this.course.students.forEach(v => {
-        //     let elem = document.createElement('p')
-        //     elem.textContent = v.name
-        //     this.root.appendChild(elem)
-        // });
+        while (this.students_html.lastChild)
+            this.students_html.removeChild(this.students_html.lastChild);
         this.course.students.forEach(v => {
             console.log(v);
             let option = document.createElement('option');
@@ -85,6 +79,8 @@ class MainView {
         this.courseOptions.push(cView);
     }
     show() {
+        while (this.courseOptions_html.lastChild)
+            this.courseOptions_html.removeChild(this.courseOptions_html.lastChild);
         this.courseOptions.forEach(v => {
             let option = document.createElement('option');
             option.textContent = v.course.name;
