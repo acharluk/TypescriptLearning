@@ -10,6 +10,8 @@ class CourseView {
     show() {
         while (this.students_html.lastChild)
             this.students_html.removeChild(this.students_html.lastChild);
+        while (this.root.lastChild)
+            this.root.removeChild(this.root.lastChild);
         this.course.students.forEach(v => {
             console.log(v);
             let option = document.createElement('option');
@@ -17,6 +19,12 @@ class CourseView {
             this.students_html.appendChild(option);
         });
         this.root.appendChild(this.students_html);
+    }
+    clear() {
+        while (this.students_html.lastChild) {
+            // console.log(this.students_html.lastChild)
+            this.students_html.removeChild(this.students_html.lastChild);
+        }
     }
 }
 exports.CourseView = CourseView;
