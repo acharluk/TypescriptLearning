@@ -30,7 +30,6 @@ export class MainView {
             this.courseOptions_html.onchange = () => {
                 let index = this.courseOptions_html.selectedIndex
                 this.courseOptions[index].show()
-                console.log("onchange!")
             }
 
             this.courseOptions_html.appendChild(option)
