@@ -1,11 +1,19 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const StudentView_1 = require("./StudentView");
 class CourseView {
     constructor(course, root) {
         this.course = course;
         this.root = root ? root : document.body;
         this.students_html = document.createElement('select');
+        this.students_views = [];
+        this.selectedStudentView_html = document.createElement('div');
+        this.course.students.forEach(v => {
+            let newSV = new StudentView_1.StudentView(v);
+            newSV.root = this.selectedStudentView_html;
+            this.students_views.push(newSV);
+        });
     }
     show() {
         while (this.students_html.lastChild)
@@ -13,23 +21,21 @@ class CourseView {
         while (this.root.lastChild)
             this.root.removeChild(this.root.lastChild);
         this.course.students.forEach(v => {
-            console.log(v);
             let option = document.createElement('option');
             option.textContent = v.name;
             this.students_html.appendChild(option);
         });
+        this.students_html.onchange = () => {
+            let index = this.students_html.selectedIndex;
+            this.students_views[index].show();
+        };
         this.root.appendChild(this.students_html);
-    }
-    clear() {
-        while (this.students_html.lastChild) {
-            // console.log(this.students_html.lastChild)
-            this.students_html.removeChild(this.students_html.lastChild);
-        }
+        this.root.appendChild(this.selectedStudentView_html);
     }
 }
 exports.CourseView = CourseView;
 
-},{}],2:[function(require,module,exports){
+},{"./StudentView":3}],2:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class MainView {
@@ -52,7 +58,6 @@ class MainView {
             this.courseOptions_html.onchange = () => {
                 let index = this.courseOptions_html.selectedIndex;
                 this.courseOptions[index].show();
-                console.log("onchange!");
             };
             this.courseOptions_html.appendChild(option);
         });
@@ -65,6 +70,28 @@ exports.MainView = MainView;
 },{}],3:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+class StudentView {
+    constructor(student, root) {
+        this.student = student;
+        this.root = root ? root : document.body;
+        this.student_html = document.createElement('div');
+    }
+    show() {
+        while (this.root.lastChild)
+            this.root.removeChild(this.root.lastChild);
+        this.student.marks.forEach(v => {
+            let mark_html = document.createElement('p');
+            mark_html.textContent = v.toString();
+            this.student_html.appendChild(mark_html);
+        });
+        this.root.appendChild(this.student_html);
+    }
+}
+exports.StudentView = StudentView;
+
+},{}],4:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // Web interface
 const MainView_1 = require("./views/MainView");
 const CourseView_1 = require("./views/CourseView");
@@ -73,17 +100,17 @@ let db = [
         "name": "Math I",
         "description": "No description provided",
         "students": [
-            { "name": "Alex" },
-            { "name": "Gum" },
-            { "name": "Missingno" }
+            { "name": "Alex", "marks": [100, 90, 97] },
+            { "name": "Gum", "marks": [10, 0, 70] },
+            { "name": "Missingno", "marks": [45, 85] }
         ]
     },
     {
         "name": "Physics II",
         "description": "No description provided",
         "students": [
-            { "name": "Combo" },
-            { "name": "Sirius" }
+            { "name": "Combo", "marks": [0] },
+            { "name": "Sirius", "marks": [62, 96, 34, 67, 24] }
         ]
     }
 ];
@@ -93,4 +120,4 @@ db.forEach(v => {
 });
 mainV.show();
 
-},{"./views/CourseView":1,"./views/MainView":2}]},{},[3]);
+},{"./views/CourseView":1,"./views/MainView":2}]},{},[4]);
