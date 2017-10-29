@@ -13,6 +13,8 @@ export class StudentView {
     }
 
     show() {
+        while (this.student_html.lastChild)
+            this.student_html.removeChild(this.student_html.lastChild)
         while (this.root.lastChild)
             this.root.removeChild(this.root.lastChild)
 
