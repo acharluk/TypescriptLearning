@@ -77,6 +77,8 @@ class StudentView {
         this.student_html = document.createElement('div');
     }
     show() {
+        while (this.student_html.lastChild)
+            this.student_html.removeChild(this.student_html.lastChild);
         while (this.root.lastChild)
             this.root.removeChild(this.root.lastChild);
         this.student.marks.forEach(v => {
