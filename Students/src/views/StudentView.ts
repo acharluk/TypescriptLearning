@@ -18,11 +18,13 @@ export class StudentView {
         while (this.root.lastChild)
             this.root.removeChild(this.root.lastChild)
 
+        let s = ""
+        let mark_html = document.createElement('p')
         this.student.marks.forEach(v => {
-            let mark_html = document.createElement('p')
-            mark_html.textContent = v.toString()
-            this.student_html.appendChild(mark_html)
+            s += v.toString() + " "
         })
+        mark_html.textContent = s
+        this.student_html.appendChild(mark_html)
 
         this.root.appendChild(this.student_html)
     }
