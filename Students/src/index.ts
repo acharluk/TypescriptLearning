@@ -8,17 +8,17 @@ let db: any[] = [
         "name": "Math I",
         "description": "No description provided",
         "students": [
-            { "name": "Alex" },
-            { "name": "Gum" },
-            { "name": "Missingno" }
+            { "name": "Alex", "marks": [100, 90, 97] },
+            { "name": "Gum", "marks": [10, 0, 70] },
+            { "name": "Missingno", "marks": [45, 85] }
         ]
     },
     {
         "name": "Physics II",
         "description": "No description provided",
         "students": [
-            { "name": "Combo" },
-            { "name": "Sirius" }
+            { "name": "Combo", "marks": [0] },
+            { "name": "Sirius", "marks": [62, 96, 34, 67, 24] }
         ]
     }
 ]
