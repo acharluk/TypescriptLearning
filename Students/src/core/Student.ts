@@ -4,5 +4,6 @@ export class Student {
 
     constructor(name: string) {
         this.name = name
+        this.marks = []
     }
 }
