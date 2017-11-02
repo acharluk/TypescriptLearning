@@ -39,6 +39,8 @@ export class CourseView {
             let index = this.students_html.selectedIndex
             this.students_views[index].show()
         }
+        
+        this.students_views[0].show()
 
         this.root.appendChild(this.students_html)
         this.root.appendChild(this.selectedStudentView_html)

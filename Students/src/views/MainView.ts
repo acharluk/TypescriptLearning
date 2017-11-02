@@ -32,6 +32,8 @@ export class MainView {
                 this.courseOptions[index].show()
             }
 
+            this.courseOptions[0].show()
+
             this.courseOptions_html.appendChild(option)
         })
 
