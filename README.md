@@ -6,3 +6,6 @@ Just random Typescript projects
   2. Enter the project folder: `cd <project name>`
   3. Compile the project: `tsc`
   4. Run app.js: `node ./out/src/app.js`
+
+## Projects
+### [Students](Students)
