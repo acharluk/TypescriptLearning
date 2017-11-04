@@ -83,13 +83,20 @@ class StudentView {
             this.student_html.removeChild(this.student_html.lastChild);
         while (this.root.lastChild)
             this.root.removeChild(this.root.lastChild);
-        let s = "";
-        let mark_html = document.createElement('p');
+        // let s = ""
+        // let mark_html = document.createElement('p')
+        // this.student.marks.forEach(v => {
+        //     s += v.toString() + " "
+        // })
+        // mark_html.textContent = s
+        let table = document.createElement('ol');
+        table.setAttribute('type', 'a');
         this.student.marks.forEach(v => {
-            s += v.toString() + " ";
+            let m = document.createElement('li');
+            m.textContent = v.toString();
+            table.appendChild(m);
         });
-        mark_html.textContent = s;
-        this.student_html.appendChild(mark_html);
+        this.student_html.appendChild(table);
         this.root.appendChild(this.student_html);
     }
 }
