@@ -83,12 +83,6 @@ class StudentView {
             this.student_html.removeChild(this.student_html.lastChild);
         while (this.root.lastChild)
             this.root.removeChild(this.root.lastChild);
-        // let s = ""
-        // let mark_html = document.createElement('p')
-        // this.student.marks.forEach(v => {
-        //     s += v.toString() + " "
-        // })
-        // mark_html.textContent = s
         let table = document.createElement('ol');
         table.setAttribute('type', 'a');
         this.student.marks.forEach(v => {
