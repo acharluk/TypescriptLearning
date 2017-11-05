@@ -29,4 +29,17 @@ db.forEach(v => {
     mainV.add(new CourseView(v))
 })
 
+
+let buttonRefresh = document.createElement('button')
+buttonRefresh.textContent = "Refresh"
+buttonRefresh.onclick = () => {
+    while (document.body.lastChild)
+        document.body.removeChild(document.body.lastChild)
+
+    document.body.appendChild(buttonRefresh)
+    mainV.show()
+}
+
+document.body.appendChild(buttonRefresh)
+
 mainV.show()
