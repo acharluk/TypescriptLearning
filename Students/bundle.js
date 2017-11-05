@@ -125,6 +125,15 @@ let mainV = new MainView_1.MainView();
 db.forEach(v => {
     mainV.add(new CourseView_1.CourseView(v));
 });
+let buttonRefresh = document.createElement('button');
+buttonRefresh.textContent = "Refresh";
+buttonRefresh.onclick = () => {
+    while (document.body.lastChild)
+        document.body.removeChild(document.body.lastChild);
+    document.body.appendChild(buttonRefresh);
+    mainV.show();
+};
+document.body.appendChild(buttonRefresh);
 mainV.show();
 
 },{"./views/CourseView":1,"./views/MainView":2}]},{},[4]);
