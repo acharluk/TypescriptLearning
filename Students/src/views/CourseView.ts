@@ -9,6 +9,8 @@ export class CourseView {
     students_views: StudentView[]
     selectedStudentView_html: HTMLElement
 
+    savedIndex: number
+
     constructor(course: Course, root ?: HTMLElement) {
         this.course = course
         this.root = root ? root : document.body
@@ -20,6 +22,7 @@ export class CourseView {
             newSV.root = this.selectedStudentView_html
             this.students_views.push(newSV)
         })
+        this.savedIndex = 0
     }
 
     show() {
@@ -38,9 +41,11 @@ export class CourseView {
         this.students_html.onchange = () => {
             let index = this.students_html.selectedIndex
             this.students_views[index].show()
+            this.savedIndex = index
         }
         
-        this.students_views[0].show()
+        this.students_views[this.savedIndex].show()
+        console.log("Current saved index: " + this.savedIndex)
 
         this.root.appendChild(this.students_html)
         this.root.appendChild(this.selectedStudentView_html)
