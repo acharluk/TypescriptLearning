@@ -5,7 +5,7 @@
     "tasks": [
         {
             "type": "shell",
-            "taskName": "Compile & Browserify",
+            "label": "Compile & Browserify",
             "command": "tsc -p Students && browserify ./Students/out/src -o ./Students/bundle.js",
             "windows": {
                 "command": "tsc -p Students ; browserify ./Students/out/src -o ./Students/bundle.js"
