@@ -1,3 +1,3 @@
-**/*.js
+Typescript/**/*.js
 !bundle.js
 **/node_modules/
