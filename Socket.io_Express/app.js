@@ -9,7 +9,7 @@ app.use(express.static(__dirname + '/public'));
 io.on('connection', socket => {
     socket.on('disconnect', () => console.log("User disconnected"));
 
-    console.log('New connection!');
+    console.log("New connection!");
 })
 
-http.listen(port, () => console.log('Server started on port: ' + port));
+http.listen(port, () => console.log("Server started on port: " + port));
