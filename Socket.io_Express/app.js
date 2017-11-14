@@ -9,6 +9,8 @@ app.use(express.static(__dirname + '/public'));
 io.on('connection', socket => {
     socket.on('disconnect', () => console.log("User disconnected"));
 
+    socket.emit('connected');
+
     console.log("New connection!");
 })
 
