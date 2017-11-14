@@ -7,6 +7,8 @@ const port = process.env.PORT || 3000;
 app.use(express.static(__dirname + '/public'));
 
 io.on('connection', socket => {
+    socket.on('disconnect', () => console.log("User disconnected"));
+
     console.log('New connection!');
 })
 
