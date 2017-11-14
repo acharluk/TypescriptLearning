@@ -6,4 +6,8 @@ const port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/public'));
 
+io.on('connection', socket => {
+    console.log('New connection!');
+})
+
 http.listen(port, () => console.log('Server started on port: ' + port));
