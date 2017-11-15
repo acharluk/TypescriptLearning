@@ -11,5 +11,8 @@ socket.on('give_random', data => {
 });
 
 function requestRandom() {
-    socket.emit('get_random');
+    let min = parseInt(prompt("Enter minimum number"));
+    let max = parseInt(prompt("Enter maximum number"));
+    
+    socket.emit('get_random', { min: min, max: max });
 }
