@@ -10,15 +10,19 @@ io.on('connection', socket => {
     socket.on('disconnect', () => console.log("User disconnected"));
 
     socket.emit('connected');
-    socket.on('get_random', () => {
-        socket.emit('give_random', getRandomNumber());
+    socket.on('get_random', data => {
+        socket.emit('give_random', getRandomNumber(data.min, data.max));
     })
 
     console.log("New connection!");
 })
 
-function getRandomNumber() {
-    return Math.random();
+function getRandomNumber(min, max) {
+    console.log("Calculating random number between: " + min + " and " + max);
+    let result = Math.floor(Math.random() * (max - min)) + min;
+    console.log("Result is: " + result);
+
+    return result;
 }
 
 http.listen(port, () => console.log("Server started on port: " + port));
