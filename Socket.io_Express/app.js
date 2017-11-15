@@ -4,9 +4,16 @@ const http = require('http').Server(app);
 const io = require('socket.io').listen(http);
 const port = process.env.PORT || 3000;
 
+let users = [];
+
 app.use(express.static(__dirname + '/public'));
 
 io.on('connection', socket => {
+    socket.on('login', data => {
+        users[socket.client.id] = data.nick;
+        console.log("Connected new user: " + data.nick);
+    })
+
     socket.on('disconnect', () => console.log("User disconnected"));
 
     socket.emit('connected');

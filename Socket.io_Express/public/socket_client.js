@@ -10,6 +10,8 @@ socket.on('give_random', data => {
     random_list.appendChild(li);
 });
 
+socket.emit('login', { nick: prompt("Enter your nick:") });
+
 function requestRandom() {
     let min = parseInt(prompt("Enter minimum number"));
     let max = parseInt(prompt("Enter maximum number"));
