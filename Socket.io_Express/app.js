@@ -12,6 +12,7 @@ io.on('connection', socket => {
     socket.on('login', data => {
         users[socket.client.id] = data.nick;
         console.log("Connected new user: " + data.nick);
+        io.emit('message', "New user connected: " + data.nick);
     })
 
     socket.on('disconnect', () => console.log("User disconnected"));
