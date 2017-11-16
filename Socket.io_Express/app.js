@@ -19,7 +19,7 @@ io.on('connection', socket => {
     socket.emit('connected');
     socket.on('get_random', data => {
         let msg = users[socket.client.id] + ": " + getRandomNumber(data.min, data.max);
-        socket.emit('give_random', msg);
+        io.emit('give_random', msg);
     })
 
     console.log("New connection!");
