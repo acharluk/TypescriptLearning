@@ -2,3 +2,4 @@ Typescript/**/*.js
 !bundle.js
 **/node_modules/
 **/.vscode/
+**/.DS_STORE
