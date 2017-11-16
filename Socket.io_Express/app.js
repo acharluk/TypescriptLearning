@@ -11,11 +11,14 @@ app.use(express.static(__dirname + '/public'));
 io.on('connection', socket => {
     socket.on('login', data => {
         users[socket.client.id] = data.nick;
-        console.log("Connected new user: " + data.nick);
+        console.log("New user connected: " + data.nick);
         io.emit('message', "New user connected: " + data.nick);
     })
 
-    socket.on('disconnect', () => console.log("User disconnected"));
+    socket.on('disconnect', () => {
+        console.log("User disconnected: " + users[socket.client.id]);
+        io.emit('message', "User disconnected: " + users[socket.client.id]);
+    });
 
     socket.emit('connected');
     socket.on('get_random', data => {
