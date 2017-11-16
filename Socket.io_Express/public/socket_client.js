@@ -1,6 +1,7 @@
 const socket = io();
 
 let messages = document.getElementById("random_list")
+let message_box = document.getElementById("message_box");
 
 socket.on('connected', () => console.log("Connected to server!"));
 
@@ -12,9 +13,6 @@ socket.on('message', data => {
 
 socket.emit('login', { nick: prompt("Enter your nick:") });
 
-function requestRandom() {
-    let min = parseInt(prompt("Enter minimum number"));
-    let max = parseInt(prompt("Enter maximum number"));
-    
-    socket.emit('get_random', { min: min, max: max });
+function sendMessage() {
+    socket.emit('send_message', message_box.value);
 }
