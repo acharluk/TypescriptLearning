@@ -15,4 +15,5 @@ socket.emit('login', { nick: prompt("Enter your nick:") });
 
 function sendMessage() {
     socket.emit('send_message', message_box.value);
+    message_box.value = "";
 }
