@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <input id="message_box">
+    <input id="message_box" onkeypress="if (event.keyCode == 13) sendMessage()">
     <button onclick="sendMessage()">Send messsage</button>
     <ul id="random_list"></ul>
 
