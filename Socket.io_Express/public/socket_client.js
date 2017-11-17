@@ -1,6 +1,6 @@
 const socket = io();
 
-let messages = document.getElementById("random_list")
+let messages = document.getElementById("message_list")
 let message_box = document.getElementById("message_box");
 
 socket.on('connected', () => console.log("Connected to server!"));
