@@ -1,6 +1,9 @@
+#message_list {
+    padding: 0;
+}
+
 li {
     list-style-type: none;
-    
     animation: fadein 0.5s;
 }
 
