@@ -17,7 +17,8 @@ io.on('connection', socket => {
 
     socket.on('disconnect', () => {
         console.log("User disconnected: " + users[socket.client.id]);
-        io.emit('message', "User disconnected: " + users[socket.client.id]);
+        if (users[socket.client.id])
+            io.emit('message', "User disconnected: " + users[socket.client.id]);
     });
 
     socket.emit('connected');
