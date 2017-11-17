@@ -11,7 +11,13 @@ socket.on('message', data => {
     messages.appendChild(li);
 });
 
-socket.emit('login', { nick: prompt("Enter your nick:") });
+let nick = prompt("Enter your nick:");
+while (nick == null || nick == undefined || nick == "")
+    nick = prompt("Enter your nick:");
+
+socket.emit('login', { nick: nick });
+
+message_box.focus();
 
 function sendMessage() {
     socket.emit('send_message', message_box.value);
