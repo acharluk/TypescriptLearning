@@ -7,7 +7,7 @@ socket.on('connected', () => console.log("Connected to server!"));
 
 socket.on('message', data => {
     let li = document.createElement('li');
-    li.textContent = data;
+    li.textContent = data.nick + ": " + data.msg;
     messages.appendChild(li);
 });
 

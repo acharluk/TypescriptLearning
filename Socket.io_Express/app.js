@@ -23,8 +23,7 @@ io.on('connection', socket => {
 
     socket.emit('connected');
     socket.on('send_message', data => {
-        let msg = users[socket.client.id] + ": " + data;
-        io.emit('message', msg);
+        io.emit('message', { nick: users[socket.client.id], msg: data });
     })
 
     console.log("New connection!");
