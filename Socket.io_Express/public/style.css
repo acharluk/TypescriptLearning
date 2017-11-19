@@ -24,3 +24,8 @@ li:nth-child(odd) {
 li:nth-child(even) {
     background: #ddf;
 }
+
+#input_section {
+    bottom: 0;
+    position: absolute;
+}

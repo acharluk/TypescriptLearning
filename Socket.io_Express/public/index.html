@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <input id="message_box" onkeypress="if (event.keyCode == 13) sendMessage()">
-    <button onclick="sendMessage()">Send messsage</button>
+    <div id="input_section">
+        <input id="message_box" onkeypress="if (event.keyCode == 13) sendMessage()">
+        <button onclick="sendMessage()">Send messsage</button>
+    </div>
     <ul id="message_list"></ul>
 
     <script src="socket_client.js"></script>
