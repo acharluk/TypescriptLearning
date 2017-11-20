@@ -33,3 +33,7 @@ li:nth-child(even) {
     padding-bottom: 5px;
     padding-top: 5px;
 }
+
+body {
+    margin: 0;
+}
