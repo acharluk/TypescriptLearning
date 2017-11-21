@@ -40,6 +40,7 @@ io.on('connection', socket => {
     console.log("New connection!");
 })
 
+/*
 function getRandomNumber(min, max) {
     console.log("Calculating random number between: " + min + " and " + max);
     let result = Math.floor(Math.random() * (max - min)) + min;
@@ -47,5 +48,6 @@ function getRandomNumber(min, max) {
 
     return result;
 }
+*/
 
 http.listen(port, () => console.log("Server started on port: " + port));
