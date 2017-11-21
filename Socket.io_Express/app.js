@@ -5,6 +5,7 @@ const io = require('socket.io').listen(http);
 const port = process.env.PORT || 3000;
 
 let users = [];
+let history = [];
 
 app.use(express.static(__dirname + '/public'));
 
@@ -12,6 +13,7 @@ io.on('connection', socket => {
     socket.on('login', data => {
         users[socket.client.id] = data.nick;
         console.log("New user connected: " + data.nick);
+        history.forEach((v) => socket.emit('message', v));
         io.emit('message', { nick: "Server", msg: "New user connected: " + data.nick });
     })
 
@@ -26,6 +28,7 @@ io.on('connection', socket => {
         console.log("Message from id=" + socket.client.id + ", user=" + users[socket.client.id] + ": " + data);
         if (users[socket.client.id]) {
             io.emit('message', { nick: users[socket.client.id], msg: data });
+            history.push({ nick: users[socket.client.id], msg: data });
         } else {
             socket.emit('message', { nick: "Server", msg:"Error: user is undefined. Please reload the page." });
         }
