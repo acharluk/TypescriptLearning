@@ -15,12 +15,15 @@ io.on('connection', socket => {
         console.log("New user connected: " + data.nick);
         history.forEach((v) => socket.emit('message', v));
         io.emit('message', { nick: "Server", msg: "New user connected: " + data.nick });
+        history.push({ nick: "Server", msg: "New user connected: " + data.nick });
     })
 
     socket.on('disconnect', () => {
         console.log("User disconnected: " + users[socket.client.id]);
-        if (users[socket.client.id])
+        if (users[socket.client.id]) {
             io.emit('message', { nick: "Server",  msg:"User disconnected: " + users[socket.client.id] });
+            history.push({ nick: "Server",  msg:"User disconnected: " + users[socket.client.id] });
+        }
     });
 
     socket.emit('connected');
