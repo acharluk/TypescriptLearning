@@ -35,6 +35,10 @@ function sendMessage(socket, message, isServer) {
         io.emit('message', msg)
         history.push(msg)
 
+        // Command
+        if (message[0] == '!')
+            sendMessage(socket, "It worked!", true);
+
         return true
     }
 
