@@ -40,6 +40,20 @@ io.on('connection', socket => {
     console.log("New connection!");
 })
 
+function sendMessage(socket, message) {
+    let nick = users[socket.client.id];
+    let msg = { nick: nick, msg: message };
+
+    if (nick) {
+        io.emit('message', msg);
+        history.push(msg);
+
+        return true;
+    }
+
+    return false;
+}
+
 /*
 function getRandomNumber(min, max) {
     console.log("Calculating random number between: " + min + " and " + max);
