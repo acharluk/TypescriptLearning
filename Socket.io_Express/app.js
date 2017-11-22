@@ -52,6 +52,12 @@ function processCommand(command) {
         case "ping":
             response = "pong!"
             break
+        case "time":
+            response = new Date(Date.now()).toLocaleTimeString()
+            break
+        case "date":
+            response = new Date(Date.now()).toLocaleDateString()
+            break
 
         default:
             response = "That command doesn't exist"
