@@ -20,14 +20,11 @@ io.on('connection', socket => {
         sendMessage(socket, "User disconnected: " + users[socket.client.id], true);
     });
 
-    socket.emit('connected');
     socket.on('send_message', data => {
         if (!sendMessage(socket, data)) {
             socket.emit('message', { nick: "Server", msg:"Error: user is undefined. Please reload the page." });
         }
     })
-
-    console.log("New connection!");
 })
 
 function sendMessage(socket, message, isServer) {
