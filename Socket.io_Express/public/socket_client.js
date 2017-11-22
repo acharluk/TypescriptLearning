@@ -10,7 +10,7 @@ socket.on('message', data => {
 });
 
 let nick = prompt("Enter your nick:");
-while (nick == null || nick == undefined || nick == "" || nick == "Server") // Probably should use a regular expression
+while (nick == null || nick == undefined || nick == "" || nick == "Server" || !/[a-zA-Z0-9]{3,}/.test(nick))
     nick = prompt("Enter your nick:");
 
 socket.emit('login', { nick: nick });
