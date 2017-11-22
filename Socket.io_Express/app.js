@@ -28,11 +28,7 @@ io.on('connection', socket => {
 
     socket.emit('connected');
     socket.on('send_message', data => {
-        console.log("Message from id=" + socket.client.id + ", user=" + users[socket.client.id] + ": " + data);
-        if (users[socket.client.id]) {
-            io.emit('message', { nick: users[socket.client.id], msg: data });
-            history.push({ nick: users[socket.client.id], msg: data });
-        } else {
+        if (!sendMessage(socket, data)) {
             socket.emit('message', { nick: "Server", msg:"Error: user is undefined. Please reload the page." });
         }
     })
