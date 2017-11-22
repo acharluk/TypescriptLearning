@@ -11,7 +11,7 @@ socket.on('message', data => {
 
 let nick = prompt("Enter your nick:");
 while (nick == null || nick == undefined || nick == "" || nick == "Server" || !/[a-zA-Z0-9]{3,}/.test(nick))
-    nick = prompt("Enter your nick:");
+    nick = prompt("Enter your nick: (3 or more alphanumeric characters)");
 
 socket.emit('login', { nick: nick });
 
