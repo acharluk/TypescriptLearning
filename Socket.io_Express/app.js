@@ -37,12 +37,27 @@ function sendMessage(socket, message, isServer) {
 
         // Command
         if (message[0] == '!')
-            sendMessage(socket, "It worked!", true);
+            sendMessage(socket, processCommand(message.substr(1)), true)
 
         return true
     }
 
     return false
+}
+
+function processCommand(command) {
+    let response = null
+
+    switch (command) {
+        case "ping":
+            response = "pong!"
+            break
+
+        default:
+            response = "That command doesn't exist"
+    }
+
+    return response
 }
 
 /*
