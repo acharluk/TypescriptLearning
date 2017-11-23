@@ -49,9 +49,10 @@ function sendMessage(socket, message, isServer) {
 
 function processCommand(command) {
     let response = "That command doesn't exist"
+    let args = command.split(" ")
 
-    if (commands[command])
-        response = commands[command].run()
+    if (commands[args[0]])
+        response = commands[args[0]].run(args)
 
     return response
 }
