@@ -4,6 +4,8 @@ const http = require('http').Server(app)
 const io = require('socket.io').listen(http)
 const port = process.env.PORT || 3000
 
+const commands = require('./commands')
+
 let users = []
 let history = []
 
@@ -46,22 +48,10 @@ function sendMessage(socket, message, isServer) {
 }
 
 function processCommand(command) {
-    let response = null
+    let response = "That command doesn't exist"
 
-    switch (command) {
-        case "ping":
-            response = "pong!"
-            break
-        case "time":
-            response = new Date(Date.now()).toLocaleTimeString()
-            break
-        case "date":
-            response = new Date(Date.now()).toLocaleDateString()
-            break
-
-        default:
-            response = "That command doesn't exist"
-    }
+    if (commands[command])
+        response = commands[command].run()
 
     return response
 }
