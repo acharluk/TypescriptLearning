@@ -21,6 +21,7 @@ io.on('connection', socket => {
 
     socket.on('disconnect', () => {
         sendMessage(socket, "User disconnected: " + users[socket.client.id], true)
+        users[socket.client.id] = undefined
         io.emit('update_users', users)
     })
 
