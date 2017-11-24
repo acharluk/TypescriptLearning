@@ -2,6 +2,7 @@ const socket = io()
 
 let messages = document.getElementById("message_list")
 let message_box = document.getElementById("message_box")
+let users_connected = document.getElementById("users_connected")
 
 socket.on('message', data => {
     let li = document.createElement('li')
@@ -10,7 +11,11 @@ socket.on('message', data => {
 })
 
 socket.on('update_users', users => {
-    
+    let str = "Users connected: "
+    for (let element in users) {
+        str += users[element] + ", "
+    }
+    users_connected.textContent = str
 })
 
 let nick = prompt("Enter your nick:")
