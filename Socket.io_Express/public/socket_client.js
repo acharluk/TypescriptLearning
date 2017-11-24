@@ -9,6 +9,10 @@ socket.on('message', data => {
     messages.appendChild(li)
 })
 
+socket.on('update_users', users => {
+    
+})
+
 let nick = prompt("Enter your nick:")
 while (nick == null || nick == undefined || nick == "Server" || !/[a-zA-Z0-9]{3,}/.test(nick))
     nick = prompt("Enter your nick: (3 or more alphanumeric characters)")

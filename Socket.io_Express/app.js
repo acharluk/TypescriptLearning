@@ -16,10 +16,12 @@ io.on('connection', socket => {
         users[socket.client.id] = data.nick
         history.forEach((v) => socket.emit('message', v))
         sendMessage(socket, "New user connected: " + data.nick, true)
+        io.emit('update_users', users);
     })
 
     socket.on('disconnect', () => {
         sendMessage(socket, "User disconnected: " + users[socket.client.id], true)
+        io.emit('update_users', users);
     })
 
     socket.on('send_message', data => {
