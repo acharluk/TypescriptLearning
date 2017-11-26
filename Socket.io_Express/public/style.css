@@ -4,7 +4,8 @@
 }
 
 li {
-    list-style-type: none; 
+    list-style-type: none;
+    padding: 1px 5px 1px 5px;
     animation: fadein 0.5s;
 }
 
