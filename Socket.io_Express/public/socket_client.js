@@ -6,7 +6,11 @@ let users_connected = document.getElementById("users_connected")
 
 socket.on('message', data => {
     let li = document.createElement('li')
-    li.textContent = data.nick + ": " + data.msg
+    if (data.enableHTML) {
+        li.innerHTML = data.nick + ": " + data.msg
+    } else {
+        li.textContent = data.nick + ": " + data.msg
+    }
     messages.appendChild(li)
 })
 
