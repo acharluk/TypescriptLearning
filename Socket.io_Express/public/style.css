@@ -1,3 +1,13 @@
+body {
+    margin: 0;
+}
+
+#users_connected {
+    margin: 0;
+    padding: 5px;
+    background-color: #aaf;
+}
+
 #message_list {
     margin: 0;
     padding: 0;
@@ -7,17 +17,6 @@ li {
     list-style-type: none;
     padding: 1px 5px;
     animation: fadein 0.5s;
-}
-
-@keyframes fadein {
-    from { 
-        opacity: 0;
-        width: 50%;
-    }
-    to {
-        opacity: 1;
-        width: 100%;
-    }
 }
 
 li:nth-child(odd) {
@@ -36,12 +35,16 @@ li:nth-child(even) {
     padding-top: 5px;
 }
 
-body {
-    margin: 0;
-}
 
-#users_connected {
-    margin: 0;
-    padding: 5px;
-    background-color: #aaf;
+/* Animations */
+
+@keyframes fadein {
+    from { 
+        opacity: 0;
+        width: 50%;
+    }
+    to {
+        opacity: 1;
+        width: 100%;
+    }
 }
