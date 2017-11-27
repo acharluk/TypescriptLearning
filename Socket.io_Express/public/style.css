@@ -1,3 +1,7 @@
+:root {
+    --bg-color: #aaf;
+}
+
 body {
     margin: 0;
 }
@@ -5,7 +9,7 @@ body {
 #users_connected {
     margin: 0;
     padding: 5px;
-    background-color: #aaf;
+    background-color: var(--bg-color);
 }
 
 #message_list {
@@ -30,7 +34,7 @@ li:nth-child(even) {
     bottom: 0;
     position: absolute;
     width: 100%;
-    background: #aaf;
+    background: var(--bg-color);
     padding-bottom: 5px;
     padding-top: 5px;
 }
