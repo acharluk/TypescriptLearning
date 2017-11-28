@@ -34,7 +34,7 @@ io.on('connection', socket => {
 
 function sendMessage(socket, message, isServer) {
     let nick = isServer ? "Server" : users[socket.client.id]
-    let msg = { nick: nick, msg: message }
+    let msg = { nick: nick, msg: message, enableHTML: isServer }
 
     if (nick) {
         io.emit('message', msg)
