@@ -8,5 +8,5 @@ module.exports = {
     'help': { description: "Gives help about any command", run(args) { return module.exports[args[1]] ? args[1] + ": " + module.exports[args[1]].description : "Command not found" } },
     'specs': { description: "Gives server specs", run() { return `${os.cpus().length}x ${os.cpus()[0].model} <br/> RAM: Total=${Math.floor(os.totalmem()/(1024*1024))}MB Free=${Math.floor(os.freemem()/(1024*1024))}MB <br/> OS: ${os.type()} ${os.platform()} ${os.arch()} ${os.release()}` } },
     'html': { description: "Let's you write html on a message", run(args) { return args.splice(1,1) } },
-    'clone': { description: "Runs a clone.io from XyronLabs", run(args) { return `<iframe width="800" height="480" src="https://xyronlabs.github.io/p5_clone.io/"></iframe>` } }
+    'clone': { description: "Runs a clone.io from <a target='_blank' href='https://xyronlabs.github.io'>XyronLabs</a>", run(args) { return `<iframe width="800" height="480" src="https://xyronlabs.github.io/p5_clone.io/"></iframe>` } }
 }
