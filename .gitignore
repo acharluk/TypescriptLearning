@@ -3,3 +3,4 @@ Typescript/**/*.js
 **/node_modules/
 **/.vscode/
 **/.DS_STORE
+data/
