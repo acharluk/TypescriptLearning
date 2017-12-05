@@ -4,12 +4,21 @@ const http = require('http').Server(app)
 const io = require('socket.io').listen(http)
 const port = process.env.PORT || 3000
 
+const MongoClient = require('mongodb').MongoClient
+const url = "mongodb://localhost:27017/messages"
+
 const commands = require('./commands')
 
 let users = {}
 let history = []
 
 app.use(express.static(__dirname + '/public'))
+
+MongoClient.connect(url, (err, db) => {
+    if (err) throw err
+    console.log("Database created!")
+    db.close()
+})
 
 io.on('connection', socket => {
     socket.on('login', data => {
