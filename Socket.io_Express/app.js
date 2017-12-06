@@ -17,7 +17,12 @@ app.use(express.static(__dirname + '/public'))
 MongoClient.connect(url, (err, db) => {
     if (err) throw err
     console.log("Database created!")
-    db.close()
+
+    db.createCollection("message_list", (err, res) => {
+        if (err) throw err;
+        console.log("Collection created!");
+        db.close();
+      });
 })
 
 io.on('connection', socket => {
