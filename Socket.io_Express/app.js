@@ -22,7 +22,7 @@ MongoClient.connect(url, (err, db) => {
         if (err) throw err;
         console.log("Collection created!");
         db.close();
-      });
+    });
 })
 
 io.on('connection', socket => {
@@ -53,6 +53,15 @@ function sendMessage(socket, message, isServer) {
     if (nick) {
         io.emit('message', msg)
         history.push(msg)
+        MongoClient.connect(url, (err, db) => {
+            if (err) throw err;
+            
+            db.collection("message_list").insertOne(msg, (err, res) => {
+                if (err) throw err
+                console.log("Message stored!")
+                db.close()
+            })
+        })
 
         // Command
         if (message[0] == '!')
