@@ -19,10 +19,10 @@ MongoClient.connect(url, (err, db) => {
     console.log("Database created!")
 
     db.createCollection("message_list", (err, res) => {
-        if (err) throw err;
-        console.log("Collection created!");
-        db.close();
-    });
+        if (err) throw err
+        console.log("Collection created!")
+        db.close()
+    })
 })
 
 io.on('connection', socket => {
