@@ -2,6 +2,8 @@
 import { MainView } from './views/MainView'
 import { CourseView } from './views/CourseView'
 import { Course } from './core/Course'
+import { MongoClient } from 'mongodb'
+
 
 let db: any[] = [
     {
